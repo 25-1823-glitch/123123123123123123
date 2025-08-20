@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>범위(scope)<script></script></title>
+</head>
+       
+<script>
+
+ let a = 1;
+  // a  변수를 선언하고 숫자 1을 할당
+  //  변수 a 는 전역변수는, 스크립트 실행, 전체에 실행 
+
+/* outer() 함수 */
+ function  outer(){ // outer 함수를 생성(정의)합니다
+
+    let b = 2;
+     //  변수 b 를 선언하고 숫자 2를 할당
+      //  변수 b 를 outer()함수 범위(scope)내변수 = 지역변수
+
+      function inner( ){ // inner 함수를 정의합니다.
+
+        let c = 3; 
+        //  변수c 를 선언하고 숫자 3을 활당하고, inner()함수 범위내의 지역변수
+
+      console.log("inner 에서 a:",a);
+      //a는 전역변수이므로 스크립트 내 모든 영역에 사용 가능능
+      console.log("inner 에서 b:",b); 
+      //b는 outer의 지역변수이지만  inner를 포함하고 있는 상위 함수 범위(scope) 이므로 접근/적용 가능
+      console.log("inner 에서 c:",c); 
+      //c는 inner 의 지역변수
+      
+
+      }
+
+      inner();
+
+      console.log("outer에서 a:",a);
+      console.log("outer에서 b:",b);
+     // console.log("outer에서 c:" ,c);
+ }
+     /* //outer() 함수 */
+
+     outer();
+ 
+
+       console.log("전역에서 a:",a);
+     // console.log("outer에서 b:" ,b); 전역에서 호출한 b 는 outer() 함수내에 있는 지역변수 이므로 접근불가 
+     // console.log("outer에서 c:" ,c); 전역에서 호출한 c 는 inner() 함수내에 있는 지역변수 이므로 접근불가 
+ 
+</script>
+
+<body>
+</body>
+</html>
